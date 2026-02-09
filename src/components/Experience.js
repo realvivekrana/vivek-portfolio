@@ -63,8 +63,6 @@ const Experience = () => {
                 </div>
               </div>
             </div>
-
-            <div className="exp-connector"></div>
           </div>
         ))}
       </div>

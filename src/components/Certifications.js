@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Certifications.css';
 
 const Certifications = () => {
+  const [selectedCert, setSelectedCert] = useState(null);
+
   const certifications = [
     {
       title: 'Full Stack Development Career Program',
@@ -10,6 +12,7 @@ const Certifications = () => {
       credentialId: 'FUF296',
       icon: '🎓',
       color: '#10b981',
+      image: `${process.env.PUBLIC_URL}/cert1.jpg`,
       skills: ['ChatGPT', 'Full Stack', 'Web Development']
     },
     {
@@ -19,6 +22,7 @@ const Certifications = () => {
       credentialId: 'FUREF296',
       icon: '⚛️',
       color: '#667eea',
+      image: `${process.env.PUBLIC_URL}/cert2.jpg`,
       skills: ['React.js', 'Frontend', 'JavaScript']
     },
     {
@@ -28,6 +32,7 @@ const Certifications = () => {
       credentialId: 'FUMOF296',
       icon: '🍃',
       color: '#10b981',
+      image: `${process.env.PUBLIC_URL}/cert3.jpg`,
       skills: ['MongoDB', 'Node.js', 'Backend']
     },
     {
@@ -37,6 +42,7 @@ const Certifications = () => {
       credentialId: 'ETFull24202506M8121496',
       icon: '💻',
       color: '#f59e0b',
+      image: `${process.env.PUBLIC_URL}/cert4.jpg`,
       skills: ['MERN Stack', 'MongoDB', 'Express', 'React', 'Node.js']
     },
     {
@@ -46,9 +52,18 @@ const Certifications = () => {
       credentialId: 'CL77yoGTJG',
       icon: '🤖',
       color: '#3b82f6',
+      image: `${process.env.PUBLIC_URL}/cert5.jpg`,
       skills: ['Artificial Intelligence', 'Machine Learning', 'AI Basics']
     }
   ];
+
+  const openModal = (cert) => {
+    setSelectedCert(cert);
+  };
+
+  const closeModal = () => {
+    setSelectedCert(null);
+  };
 
   return (
     <section id="certifications" className="certifications">
@@ -58,6 +73,14 @@ const Certifications = () => {
       <div className="certifications-grid">
         {certifications.map((cert, index) => (
           <div className="cert-card" key={index}>
+            <div className="cert-image-wrapper" onClick={() => openModal(cert)}>
+              <img src={cert.image} alt={cert.title} className="cert-image" />
+              <div className="cert-overlay">
+                <i className="fas fa-search-plus"></i>
+                <span>View Certificate</span>
+              </div>
+            </div>
+
             <div className="cert-header">
               <div className="cert-icon-wrapper" style={{ background: cert.color }}>
                 <span className="cert-icon">{cert.icon}</span>
@@ -94,13 +117,6 @@ const Certifications = () => {
                 ))}
               </div>
             </div>
-
-            <div className="cert-footer">
-              <button className="cert-btn" style={{ background: cert.color }}>
-                <i className="fas fa-eye"></i>
-                View Certificate
-              </button>
-            </div>
           </div>
         ))}
       </div>
@@ -119,6 +135,22 @@ const Certifications = () => {
           <div className="stat-label">Verified</div>
         </div>
       </div>
+
+      {/* Modal */}
+      {selectedCert && (
+        <div className="cert-modal" onClick={closeModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={closeModal}>
+              <i className="fas fa-times"></i>
+            </button>
+            <img src={selectedCert.image} alt={selectedCert.title} />
+            <div className="modal-info">
+              <h3>{selectedCert.title}</h3>
+              <p>{selectedCert.issuer}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
