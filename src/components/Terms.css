@@ -1,0 +1,38 @@
+.terms {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.terms-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.term-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.term-item:hover {
+  background: rgba(102, 126, 234, 0.1);
+  border-color: rgba(102, 126, 234, 0.3);
+  transform: translateX(10px);
+}
+
+.term-icon {
+  font-size: 2rem;
+}
+
+.term-item p {
+  color: #cbd5e0;
+  line-height: 1.6;
+  font-size: 1rem;
+}

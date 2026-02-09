@@ -1,0 +1,17 @@
+IMPORTANT: Add Your Profile Photo Here!
+
+1. Save the photo you shared (the one with you in a pink shirt) 
+2. Rename it to: vivek-profile.jpg
+3. Place it in this folder: vivek-portfolio/public/
+
+The photo will automatically appear in your portfolio!
+
+Current location: C:\My Portfolio\vivek-portfolio\public\
+
+Steps:
+- Right-click the image in the chat
+- Save as "vivek-profile.jpg"
+- Copy to this folder
+- Refresh browser (Ctrl + F5)
+
+That's it! Your photo will replace the VK gradient avatar.
