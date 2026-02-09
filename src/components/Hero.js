@@ -79,7 +79,7 @@ const Hero = () => {
             <div className="glow-effect"></div>
             <div className="profile-avatar">
               <img 
-                src="/vivek-profile.jpg.jpeg" 
+                src={`${process.env.PUBLIC_URL}/vivek-profile.jpg.jpeg`}
                 alt="Vivek Kumar Rana"
                 onError={(e) => {
                   e.target.style.display = 'none';
