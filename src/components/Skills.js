@@ -14,7 +14,9 @@ const Skills = () => {
     { name: 'GitHub', icon: '🐙' },
     { name: 'Git', icon: '📦' },
     { name: 'Bootstrap', icon: '🅱️' },
-    { name: 'Tailwind', icon: '💨' }
+    { name: 'Tailwind', icon: '💨' },
+    { name: 'Data Structures', icon: '🔗' },
+    { name: 'Algorithms', icon: '🧮' }
   ];
 
   return (
