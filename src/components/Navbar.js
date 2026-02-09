@@ -22,6 +22,7 @@ const Navbar = () => {
           <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
           <a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a>
           <a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a>
+          <a href="#resume" onClick={() => setMenuOpen(false)}>Resume</a>
           <a href="#contact-form" onClick={() => setMenuOpen(false)}>Get in Touch</a>
           <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
         </div>
