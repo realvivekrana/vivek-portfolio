@@ -225,6 +225,57 @@
   }
 }
 
+@media (max-width: 640px) {
+  .about-intro {
+    margin-bottom: 45px;
+  }
+
+  .about-intro p {
+    font-size: 1.02rem;
+    line-height: 1.75;
+  }
+
+  .about-section {
+    padding: 28px 22px;
+  }
+
+  .section-header {
+    gap: 13px;
+  }
+
+  .section-header h3 {
+    font-size: 1.35rem;
+  }
+
+  .timeline-content h4 {
+    font-size: 1.08rem;
+  }
+
+  .timeline-content .institution {
+    font-size: 0.92rem;
+  }
+
+  .experience-item {
+    padding: 16px;
+  }
+
+  .exp-content h4 {
+    font-size: 1.02rem;
+  }
+
+  .exp-content p {
+    font-size: 0.88rem;
+  }
+
+  .cert-item {
+    padding: 13px;
+  }
+
+  .cert-item span {
+    font-size: 0.92rem;
+  }
+}
+
 @media (max-width: 480px) {
   .about-intro {
     margin-bottom: 40px;
@@ -256,12 +307,22 @@
     padding-left: 25px;
   }
 
+  .timeline-dot {
+    width: 16px;
+    height: 16px;
+    left: -24px;
+  }
+
   .timeline-content h4 {
     font-size: 1.05rem;
   }
 
   .timeline-content .institution {
     font-size: 0.9rem;
+  }
+
+  .timeline-content .status {
+    font-size: 0.8rem;
   }
 
   .experience-item {
@@ -284,18 +345,94 @@
     padding: 12px;
   }
 
+  .cert-item i {
+    font-size: 1.2rem;
+  }
+
   .cert-item span {
     font-size: 0.9rem;
   }
 }
 
+@media (max-width: 420px) {
+  .about-intro p {
+    font-size: 0.98rem;
+  }
+
+  .about-section {
+    padding: 22px 18px;
+  }
+
+  .section-header h3 {
+    font-size: 1.25rem;
+  }
+
+  .section-icon {
+    font-size: 1.9rem;
+  }
+
+  .timeline {
+    padding-left: 22px;
+  }
+
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    left: -22px;
+  }
+
+  .timeline-content h4 {
+    font-size: 1.02rem;
+  }
+
+  .timeline-content .institution {
+    font-size: 0.88rem;
+  }
+
+  .experience-item {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .exp-icon {
+    font-size: 1.7rem;
+  }
+
+  .exp-content h4 {
+    font-size: 0.98rem;
+  }
+
+  .exp-content p {
+    font-size: 0.83rem;
+  }
+
+  .cert-item {
+    padding: 11px;
+    gap: 10px;
+  }
+
+  .cert-item span {
+    font-size: 0.88rem;
+  }
+}
+
 @media (max-width: 360px) {
+  .about-intro {
+    margin-bottom: 35px;
+  }
+
   .about-intro p {
     font-size: 0.95rem;
+    line-height: 1.65;
   }
 
   .about-section {
     padding: 20px 15px;
+  }
+
+  .section-header {
+    gap: 10px;
+    margin-bottom: 18px;
   }
 
   .section-header h3 {
@@ -306,15 +443,158 @@
     font-size: 1.8rem;
   }
 
+  .timeline {
+    padding-left: 20px;
+  }
+
+  .timeline::before {
+    left: 7px;
+  }
+
+  .timeline-dot {
+    width: 14px;
+    height: 14px;
+    left: -20px;
+  }
+
+  .timeline-item {
+    margin-bottom: 20px;
+  }
+
   .timeline-content h4 {
     font-size: 1rem;
+  }
+
+  .timeline-content .institution {
+    font-size: 0.85rem;
+  }
+
+  .timeline-content .status {
+    font-size: 0.78rem;
+  }
+
+  .experience-list {
+    gap: 15px;
+  }
+
+  .experience-item {
+    padding: 13px;
+    gap: 11px;
+  }
+
+  .exp-icon {
+    font-size: 1.6rem;
   }
 
   .exp-content h4 {
     font-size: 0.95rem;
   }
 
+  .exp-content p {
+    font-size: 0.8rem;
+  }
+
+  .cert-list {
+    gap: 12px;
+  }
+
+  .cert-item {
+    padding: 10px;
+    gap: 9px;
+  }
+
+  .cert-item i {
+    font-size: 1.1rem;
+  }
+
   .cert-item span {
     font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .about-intro p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .about-section {
+    padding: 18px 12px;
+  }
+
+  .section-header {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .section-header h3 {
+    font-size: 1.15rem;
+  }
+
+  .section-icon {
+    font-size: 1.7rem;
+  }
+
+  .timeline {
+    padding-left: 18px;
+  }
+
+  .timeline::before {
+    left: 6px;
+  }
+
+  .timeline-dot {
+    width: 12px;
+    height: 12px;
+    left: -18px;
+    border-width: 2px;
+  }
+
+  .timeline-item {
+    margin-bottom: 18px;
+  }
+
+  .timeline-content h4 {
+    font-size: 0.95rem;
+  }
+
+  .timeline-content .institution {
+    font-size: 0.82rem;
+  }
+
+  .timeline-content .status {
+    font-size: 0.75rem;
+  }
+
+  .experience-item {
+    padding: 12px;
+    gap: 10px;
+  }
+
+  .exp-icon {
+    font-size: 1.5rem;
+  }
+
+  .exp-content h4 {
+    font-size: 0.9rem;
+  }
+
+  .exp-content p {
+    font-size: 0.78rem;
+    line-height: 1.4;
+  }
+
+  .cert-item {
+    padding: 9px;
+    gap: 8px;
+  }
+
+  .cert-item i {
+    font-size: 1rem;
+  }
+
+  .cert-item span {
+    font-size: 0.82rem;
+    line-height: 1.4;
   }
 }
