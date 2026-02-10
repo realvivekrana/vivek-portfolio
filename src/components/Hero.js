@@ -48,7 +48,11 @@ const Hero = () => {
       <div className="hero-content">
         <div className="hero-text">
           <h3 className="greeting">Hello! My name is</h3>
-          <h1 className="name">Vivek Kumar Rana</h1>
+          <h1 className="name">
+            <span className="name-word">Vivek</span>
+            <span className="name-word">Kumar</span>
+            <span className="name-word">Rana</span>
+          </h1>
           <h2 className="role">
             I'm a <span className="typing">{text}</span>
             <span className="cursor">|</span>
