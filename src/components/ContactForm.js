@@ -12,6 +12,7 @@ const ContactForm = () => {
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -60,27 +61,49 @@ const ContactForm = () => {
     return newErrors;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     const newErrors = validateForm();
     
     if (Object.keys(newErrors).length === 0) {
-      // Form is valid
-      console.log('Form submitted:', formData);
-      setSubmitted(true);
+      setLoading(true);
       
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          subject: '',
-          message: ''
+      try {
+        // Send to backend API
+        const response = await fetch('http://localhost:5000/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
         });
-        setSubmitted(false);
-      }, 3000);
+
+        const data = await response.json();
+
+        if (data.success) {
+          setSubmitted(true);
+          
+          // Reset form after 3 seconds
+          setTimeout(() => {
+            setFormData({
+              name: '',
+              email: '',
+              phone: '',
+              subject: '',
+              message: ''
+            });
+            setSubmitted(false);
+          }, 3000);
+        } else {
+          setErrors({ submit: data.message || 'Failed to send message' });
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        setErrors({ submit: 'Failed to send message. Please try again.' });
+      } finally {
+        setLoading(false);
+      }
     } else {
       setErrors(newErrors);
     }
@@ -115,6 +138,13 @@ const ContactForm = () => {
             <div className="success-message">
               <i className="fas fa-check-circle"></i>
               Thank you! Your message has been sent successfully.
+            </div>
+          )}
+
+          {errors.submit && (
+            <div className="error-message">
+              <i className="fas fa-exclamation-circle"></i>
+              {errors.submit}
             </div>
           )}
 
@@ -192,9 +222,9 @@ const ContactForm = () => {
             {errors.message && <span className="error-text">{errors.message}</span>}
           </div>
 
-          <button type="submit" className="submit-btn">
+          <button type="submit" className="submit-btn" disabled={loading}>
             <i className="fas fa-paper-plane"></i>
-            Send Message
+            {loading ? 'Sending...' : 'Send Message'}
           </button>
         </form>
       </div>
