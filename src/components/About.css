@@ -23,27 +23,335 @@
   100% { transform: rotate(360deg); }
 }
 
-.about-intro {
-  max-width: 800px;
-  margin: 0 auto 50px;
-  text-align: center;
+.about-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 35px;
+  margin-bottom: 60px;
   position: relative;
   z-index: 1;
 }
 
-.about-intro p {
-  font-family: 'Inter', sans-serif;
-  font-size: 1.15rem;
-  line-height: 1.8;
-  color: #cbd5e0;
-  font-weight: 400;
-  letter-spacing: 0.3px;
-  animation: fadeIn 1s ease;
+.about-card {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  padding: 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
+.about-card:nth-child(1) { animation-delay: 0.1s; }
+.about-card:nth-child(2) { animation-delay: 0.2s; }
+.about-card:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.about-card:hover::before {
+  left: 100%;
+}
+
+.about-card:hover {
+  transform: translateY(-15px) scale(1.05);
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.12) 0%, rgba(118, 75, 162, 0.12) 100%);
+  border-color: rgba(102, 126, 234, 0.4);
+  box-shadow: 0 25px 70px rgba(102, 126, 234, 0.4);
+}
+
+.about-icon {
+  font-size: 4rem;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 10px 20px rgba(102, 126, 234, 0.4));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+
+.about-card h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 15px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  transition: all 0.3s ease;
+}
+
+.about-card:hover h3 {
+  color: #667eea;
+  transform: scale(1.05);
+}
+
+.about-card p {
+  font-family: 'Inter', sans-serif;
+  color: #cbd5e0;
+  font-size: 1rem;
+  line-height: 1.8;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+}
+
+.about-card:hover p {
+  color: #e2e8f0;
+}
+
+.about-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+.highlight-item {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 35px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  transition: all 0.4s ease;
+  animation: fadeInScale 0.6s ease forwards;
+  opacity: 0;
+}
+
+.highlight-item:nth-child(1) { animation-delay: 0.4s; }
+.highlight-item:nth-child(2) { animation-delay: 0.5s; }
+.highlight-item:nth-child(3) { animation-delay: 0.6s; }
+.highlight-item:nth-child(4) { animation-delay: 0.7s; }
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.highlight-item:hover {
+  transform: translateY(-10px);
+  background: rgba(118, 75, 162, 0.1);
+  border-color: rgba(118, 75, 162, 0.3);
+  box-shadow: 0 15px 40px rgba(118, 75, 162, 0.3);
+}
+
+.highlight-number {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.highlight-label {
+  font-family: 'Inter', sans-serif;
+  color: #cbd5e0;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .about-card {
+    padding: 35px 30px;
+  }
+
+  .about-icon {
+    font-size: 3.5rem;
+  }
+
+  .about-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .about-card p {
+    font-size: 0.98rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-card {
+    padding: 32px 28px;
+  }
+
+  .about-icon {
+    font-size: 3.2rem;
+    margin-bottom: 20px;
+  }
+
+  .about-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .about-card p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .highlight-item {
+    padding: 30px 25px;
+  }
+
+  .highlight-number {
+    font-size: 2.5rem;
+  }
+
+  .highlight-label {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-card {
+    padding: 30px 25px;
+  }
+
+  .about-icon {
+    font-size: 3rem;
+  }
+
+  .about-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .about-card p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .highlight-item {
+    padding: 28px 22px;
+  }
+
+  .highlight-number {
+    font-size: 2.3rem;
+  }
+
+  .highlight-label {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .about-card {
+    padding: 28px 22px;
+  }
+
+  .about-icon {
+    font-size: 2.8rem;
+  }
+
+  .about-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .about-card p {
+    font-size: 0.9rem;
+  }
+
+  .highlight-item {
+    padding: 25px 20px;
+  }
+
+  .highlight-number {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-card {
+    padding: 25px 20px;
+  }
+
+  .about-icon {
+    font-size: 2.5rem;
+    margin-bottom: 18px;
+  }
+
+  .about-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+  }
+
+  .about-card p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .highlight-item {
+    padding: 22px 18px;
+  }
+
+  .highlight-number {
+    font-size: 2rem;
+  }
+
+  .highlight-label {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .about-card {
+    padding: 22px 18px;
+  }
+
+  .about-icon {
+    font-size: 2.2rem;
+  }
+
+  .about-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .about-card p {
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
+  .highlight-item {
+    padding: 20px 15px;
+  }
+
+  .highlight-number {
+    font-size: 1.8rem;
+  }
+
+  .highlight-label {
+    font-size: 0.82rem;
+  }
 }
 
 .about-content {

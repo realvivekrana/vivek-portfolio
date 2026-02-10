@@ -6,50 +6,51 @@ const About = () => {
     <section id="about" className="about">
       <h2>About Me</h2>
       
-      <div className="about-intro">
-        <p>
-          I'm a passionate Full Stack Web Developer specializing in the MERN stack. 
-          I focus on building responsive, user-friendly web applications with clean code 
-          and modern design principles.
-        </p>
+      <div className="about-container">
+        <div className="about-card">
+          <div className="about-icon">👨‍💻</div>
+          <h3>Who I Am</h3>
+          <p>
+            I'm a passionate Full Stack Web Developer specializing in the MERN stack. 
+            I love building responsive, user-friendly web applications that solve real-world problems.
+          </p>
+        </div>
+
+        <div className="about-card">
+          <div className="about-icon">🎯</div>
+          <h3>What I Do</h3>
+          <p>
+            I create modern web applications using React, Node.js, Express, and MongoDB. 
+            From frontend design to backend architecture, I handle the complete development lifecycle.
+          </p>
+        </div>
+
+        <div className="about-card">
+          <div className="about-icon">💡</div>
+          <h3>My Approach</h3>
+          <p>
+            I focus on writing clean, maintainable code with modern design principles. 
+            Performance, security, and user experience are at the core of everything I build.
+          </p>
+        </div>
       </div>
 
-      <div className="about-content">
-        {/* Education */}
-        <div className="about-section">
-          <div className="section-header">
-            <div className="section-icon">🎓</div>
-            <h3>Education</h3>
-          </div>
-          <div className="timeline">
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h4>MCA in AI & ML</h4>
-                <p className="institution">Amity University, Uttar Pradesh</p>
-                <p className="year">2024 - 2026</p>
-                <p className="status">Currently Pursuing</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h4>BCA</h4>
-                <p className="institution">Vinoba Bhave University</p>
-                <p className="year">2021 - 2024</p>
-                <p className="status">Completed</p>
-              </div>
-            </div>
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h4>Intermediate</h4>
-                <p className="institution">Inter Science College, Hazaribagh</p>
-                <p className="year">2021</p>
-                <p className="status">Completed</p>
-              </div>
-            </div>
-          </div>
+      <div className="about-highlights">
+        <div className="highlight-item">
+          <div className="highlight-number">3+</div>
+          <div className="highlight-label">Years Learning</div>
+        </div>
+        <div className="highlight-item">
+          <div className="highlight-number">10+</div>
+          <div className="highlight-label">Projects Built</div>
+        </div>
+        <div className="highlight-item">
+          <div className="highlight-number">5+</div>
+          <div className="highlight-label">Certifications</div>
+        </div>
+        <div className="highlight-item">
+          <div className="highlight-number">100%</div>
+          <div className="highlight-label">Dedication</div>
         </div>
       </div>
     </section>

@@ -20,6 +20,7 @@ const Navbar = () => {
         <div className={`nav-menu ${menuOpen ? 'active' : ''}`}>
           <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
           <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+          <a href="#education" onClick={() => setMenuOpen(false)}>Education</a>
           <a href="#experience" onClick={() => setMenuOpen(false)}>Experience</a>
           <a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a>
           <a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a>
