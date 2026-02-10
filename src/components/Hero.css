@@ -115,20 +115,7 @@
 }
 
 .name-word::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
-  border-radius: 2px;
-  animation: expandWidth 1s ease forwards;
-  animation-delay: inherit;
-}
-
-@keyframes expandWidth {
-  to { width: 100%; }
+  display: none;
 }
 
 .name-word:hover {
@@ -448,10 +435,6 @@
     gap: 12px;
   }
 
-  .name-word::after {
-    height: 3px;
-  }
-
   .role {
     font-size: 1.5rem;
   }
@@ -496,11 +479,6 @@
     gap: 10px;
   }
 
-  .name-word::after {
-    height: 2.5px;
-    bottom: -3px;
-  }
-
   .role {
     font-size: 1.3rem;
   }
@@ -543,10 +521,6 @@
   .name {
     font-size: 1.75rem;
     gap: 8px;
-  }
-
-  .name-word::after {
-    height: 2px;
   }
 
   .role {
