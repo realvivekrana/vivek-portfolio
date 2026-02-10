@@ -10,55 +10,38 @@
   color: #a0aec0;
   font-size: 1.1rem;
   margin-top: -20px;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   font-weight: 400;
   letter-spacing: 0.3px;
 }
 
-.experience-timeline {
+.experience-journey {
   max-width: 900px;
-  margin: 0 auto 60px;
-  display: flex;
-  flex-direction: column;
+  margin: 0 auto;
+  position: relative;
+}
+
+.journey-step {
+  display: grid;
+  grid-template-columns: 80px 1fr;
   gap: 30px;
+  margin-bottom: 50px;
   position: relative;
-}
-
-/* Remove the center line */
-
-.experience-card {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 40px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  position: relative;
-  z-index: 1;
-  animation: fadeInUp 0.6s ease forwards;
+  animation: fadeInUp 0.8s ease forwards;
   opacity: 0;
-  overflow: hidden;
 }
 
-.experience-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: -1;
+.journey-step:nth-child(1) { animation-delay: 0.1s; }
+.journey-step:nth-child(2) { animation-delay: 0.3s; }
+.journey-step:nth-child(3) { animation-delay: 0.5s; }
+
+.journey-step:last-child {
+  margin-bottom: 0;
 }
 
-.experience-card:hover::before {
-  opacity: 1;
+.journey-step:last-child .step-connector {
+  display: none;
 }
-
-.experience-card:nth-child(1) { animation-delay: 0.1s; }
-.experience-card:nth-child(2) { animation-delay: 0.2s; }
-.experience-card:nth-child(3) { animation-delay: 0.3s; }
 
 @keyframes fadeInUp {
   from {
@@ -71,27 +54,86 @@
   }
 }
 
-.experience-card:hover {
-  transform: translateY(-15px) scale(1.03);
+.step-number {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 2;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 20px 50px rgba(102, 126, 234, 0.6);
+  }
+}
+
+.step-connector {
+  position: absolute;
+  left: 40px;
+  top: 80px;
+  width: 4px;
+  height: calc(100% - 30px);
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.step-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 35px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.step-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.step-card:hover::before {
+  left: 100%;
+}
+
+.step-card:hover {
+  transform: translateX(10px) scale(1.02);
   background: rgba(102, 126, 234, 0.08);
   border-color: rgba(102, 126, 234, 0.4);
-  box-shadow: 0 30px 80px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 25px 70px rgba(102, 126, 234, 0.4);
 }
 
-.exp-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-}
-
-.exp-icon-wrapper {
+.step-icon {
   width: 70px;
   height: 70px;
   border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   animation: float 3s ease-in-out infinite;
 }
@@ -101,32 +143,30 @@
   50% { transform: translateY(-10px); }
 }
 
-.exp-icon {
-  font-size: 2.5rem;
-}
-
-.exp-status {
-  padding: 8px 20px;
+.step-status {
+  display: inline-block;
+  padding: 6px 16px;
   border: 2px solid;
-  border-radius: 25px;
+  border-radius: 20px;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  margin-bottom: 15px;
   background: rgba(255, 255, 255, 0.05);
 }
 
-.exp-body h3 {
+.step-content h3 {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   color: #fff;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   font-weight: 700;
   letter-spacing: -0.5px;
 }
 
-.exp-role {
+.step-role {
   font-family: 'Space Grotesk', sans-serif;
   color: #667eea;
   font-size: 1.1rem;
@@ -135,10 +175,10 @@
   letter-spacing: 0.5px;
 }
 
-.exp-details {
+.step-details {
   display: flex;
-  gap: 30px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .detail-item {
@@ -153,67 +193,48 @@
 .detail-item i {
   color: #667eea;
   font-size: 1.1rem;
-}
-
-.experience-summary {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  margin-top: 50px;
-}
-
-.summary-card {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 35px;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
-  transition: all 0.4s ease;
-}
-
-.summary-card:hover {
-  transform: translateY(-10px);
-  background: rgba(118, 75, 162, 0.1);
-  border-color: rgba(118, 75, 162, 0.3);
-  box-shadow: 0 15px 40px rgba(118, 75, 162, 0.3);
-}
-
-.summary-icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 5px 15px rgba(102, 126, 234, 0.4));
-}
-
-.summary-card h4 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.3rem;
-  color: #fff;
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-
-.summary-card p {
-  font-family: 'Inter', sans-serif;
-  color: #cbd5e0;
-  line-height: 1.6;
-  font-size: 0.95rem;
+  width: 18px;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .experience-subtitle {
     font-size: 1.05rem;
+    margin-bottom: 50px;
   }
 
-  .experience-card {
-    padding: 30px 25px;
+  .journey-step {
+    grid-template-columns: 70px 1fr;
+    gap: 25px;
+    margin-bottom: 45px;
   }
 
-  .exp-body h3 {
-    font-size: 1.6rem;
+  .step-number {
+    width: 70px;
+    height: 70px;
+    font-size: 2.2rem;
   }
 
-  .exp-role {
+  .step-connector {
+    left: 35px;
+    top: 70px;
+  }
+
+  .step-card {
+    padding: 30px;
+  }
+
+  .step-icon {
+    width: 65px;
+    height: 65px;
+    font-size: 2.2rem;
+  }
+
+  .step-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .step-role {
     font-size: 1.05rem;
   }
 }
@@ -221,113 +242,184 @@
 @media (max-width: 640px) {
   .experience-subtitle {
     font-size: 1rem;
+    margin-bottom: 45px;
+  }
+
+  .journey-step {
+    grid-template-columns: 60px 1fr;
+    gap: 20px;
     margin-bottom: 40px;
   }
 
-  .experience-card {
-    padding: 28px 22px;
-  }
-
-  .exp-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-
-  .exp-icon-wrapper {
-    width: 65px;
-    height: 65px;
-  }
-
-  .exp-icon {
-    font-size: 2.2rem;
-  }
-
-  .exp-body h3 {
-    font-size: 1.5rem;
-  }
-
-  .exp-details {
-    flex-direction: column;
-    gap: 12px;
-  }
-}
-
-@media (max-width: 480px) {
-  .experience-card {
-    padding: 25px 20px;
-  }
-
-  .exp-icon-wrapper {
+  .step-number {
     width: 60px;
     height: 60px;
-  }
-
-  .exp-icon {
     font-size: 2rem;
   }
 
-  .exp-status {
-    padding: 6px 16px;
-    font-size: 0.8rem;
+  .step-connector {
+    left: 30px;
+    top: 60px;
+    width: 3px;
   }
 
-  .exp-body h3 {
+  .step-card {
+    padding: 28px 25px;
+  }
+
+  .step-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+
+  .step-content h3 {
     font-size: 1.4rem;
   }
 
-  .exp-role {
+  .step-role {
     font-size: 1rem;
   }
 
   .detail-item {
     font-size: 0.9rem;
   }
+}
 
-  .summary-card {
-    padding: 30px 25px;
+@media (max-width: 480px) {
+  .journey-step {
+    grid-template-columns: 55px 1fr;
+    gap: 18px;
+    margin-bottom: 35px;
   }
 
-  .summary-icon {
-    font-size: 2.5rem;
+  .step-number {
+    width: 55px;
+    height: 55px;
+    font-size: 1.8rem;
   }
 
-  .summary-card h4 {
-    font-size: 1.2rem;
+  .step-connector {
+    left: 27px;
+    top: 55px;
   }
 
-  .summary-card p {
-    font-size: 0.9rem;
+  .step-card {
+    padding: 25px 22px;
+  }
+
+  .step-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 1.8rem;
+  }
+
+  .step-status {
+    font-size: 0.75rem;
+    padding: 5px 14px;
+  }
+
+  .step-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .step-role {
+    font-size: 0.95rem;
+  }
+
+  .detail-item {
+    font-size: 0.88rem;
   }
 }
 
 @media (max-width: 360px) {
-  .experience-card {
+  .experience-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 40px;
+  }
+
+  .journey-step {
+    grid-template-columns: 50px 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .step-number {
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+  }
+
+  .step-connector {
+    left: 25px;
+    top: 50px;
+  }
+
+  .step-card {
     padding: 22px 18px;
   }
 
-  .exp-icon-wrapper {
-    width: 55px;
-    height: 55px;
+  .step-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
   }
 
-  .exp-icon {
-    font-size: 1.8rem;
+  .step-status {
+    font-size: 0.7rem;
+    padding: 4px 12px;
   }
 
-  .exp-body h3 {
-    font-size: 1.3rem;
+  .step-content h3 {
+    font-size: 1.2rem;
   }
 
-  .exp-role {
-    font-size: 0.95rem;
+  .step-role {
+    font-size: 0.9rem;
   }
 
   .detail-item {
     font-size: 0.85rem;
   }
+}
 
-  .summary-card {
-    padding: 25px 20px;
+@media (max-width: 320px) {
+  .journey-step {
+    grid-template-columns: 45px 1fr;
+    gap: 12px;
+  }
+
+  .step-number {
+    width: 45px;
+    height: 45px;
+    font-size: 1.4rem;
+  }
+
+  .step-connector {
+    left: 22px;
+    top: 45px;
+  }
+
+  .step-card {
+    padding: 20px 15px;
+  }
+
+  .step-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+  }
+
+  .step-content h3 {
+    font-size: 1.15rem;
+  }
+
+  .step-role {
+    font-size: 0.88rem;
+  }
+
+  .detail-item {
+    font-size: 0.82rem;
   }
 }

@@ -2,25 +2,6 @@
   background: rgba(255, 255, 255, 0.02);
   border-radius: 20px;
   backdrop-filter: blur(10px);
-  position: relative;
-  overflow: hidden;
-}
-
-.education::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(118, 75, 162, 0.1) 0%, transparent 70%);
-  animation: rotateReverse 25s linear infinite;
-  pointer-events: none;
-}
-
-@keyframes rotateReverse {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(-360deg); }
 }
 
 .education-subtitle {
@@ -29,48 +10,100 @@
   color: #a0aec0;
   font-size: 1.1rem;
   margin-top: -20px;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
   font-weight: 400;
   letter-spacing: 0.3px;
-  animation: fadeIn 1s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.education-journey {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
 }
 
-.education-grid {
+.journey-step {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 35px;
-  margin-bottom: 60px;
+  grid-template-columns: 80px 1fr;
+  gap: 30px;
+  margin-bottom: 50px;
   position: relative;
-  z-index: 1;
-}
-
-.education-card {
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-  padding: 40px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  animation: slideUp 0.8s ease forwards;
+  animation: fadeInUp 0.8s ease forwards;
   opacity: 0;
 }
 
-.education-card:nth-child(1) { animation-delay: 0.1s; }
-.education-card:nth-child(2) { animation-delay: 0.2s; }
-.education-card:nth-child(3) { animation-delay: 0.3s; }
+.journey-step:nth-child(1) { animation-delay: 0.1s; }
+.journey-step:nth-child(2) { animation-delay: 0.3s; }
+.journey-step:nth-child(3) { animation-delay: 0.5s; }
 
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+.journey-step:last-child {
+  margin-bottom: 0;
 }
 
-.education-card::before {
+.journey-step:last-child .step-connector {
+  display: none;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-number {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #fff;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 2;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 20px 50px rgba(102, 126, 234, 0.6);
+  }
+}
+
+.step-connector {
+  position: absolute;
+  left: 40px;
+  top: 80px;
+  width: 4px;
+  height: calc(100% - 30px);
+  background: linear-gradient(180deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.step-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 35px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.step-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -81,44 +114,36 @@
   transition: left 0.6s ease;
 }
 
-.education-card:hover::before {
+.step-card:hover::before {
   left: 100%;
 }
 
-.education-card:hover {
-  transform: translateY(-15px) scale(1.03);
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.12) 0%, rgba(118, 75, 162, 0.12) 100%);
+.step-card:hover {
+  transform: translateX(10px) scale(1.02);
+  background: rgba(102, 126, 234, 0.08);
   border-color: rgba(102, 126, 234, 0.4);
   box-shadow: 0 25px 70px rgba(102, 126, 234, 0.4);
 }
 
-.edu-icon-wrapper {
-  width: 80px;
-  height: 80px;
-  border-radius: 18px;
+.step-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 25px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(5deg); }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
-.edu-icon {
-  font-size: 2.8rem;
-}
-
-.edu-content {
-  position: relative;
-  z-index: 1;
-}
-
-.edu-status {
+.step-status {
   display: inline-block;
   padding: 6px 16px;
   border: 2px solid;
@@ -130,30 +155,18 @@
   letter-spacing: 0.5px;
   margin-bottom: 15px;
   background: rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
 }
 
-.education-card:hover .edu-status {
-  transform: translateX(5px);
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-}
-
-.edu-content h3 {
+.step-content h3 {
   font-family: 'Poppins', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   color: #fff;
   margin-bottom: 12px;
   font-weight: 700;
   letter-spacing: -0.5px;
-  transition: all 0.3s ease;
 }
 
-.education-card:hover .edu-content h3 {
-  color: #667eea;
-  transform: translateX(5px);
-}
-
-.edu-institution {
+.step-institution {
   font-family: 'Inter', sans-serif;
   color: #a0aec0;
   font-size: 1rem;
@@ -161,20 +174,14 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  transition: all 0.3s ease;
 }
 
-.education-card:hover .edu-institution {
-  color: #cbd5e0;
-  transform: translateX(5px);
-}
-
-.edu-institution i {
+.step-institution i {
   color: #667eea;
   font-size: 1.1rem;
 }
 
-.edu-year {
+.step-year {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -187,131 +194,55 @@
   font-size: 0.95rem;
   font-weight: 600;
   margin-bottom: 15px;
-  transition: all 0.3s ease;
 }
 
-.education-card:hover .edu-year {
-  background: rgba(240, 147, 251, 0.2);
-  border-color: rgba(240, 147, 251, 0.5);
-  transform: translateX(5px);
-}
-
-.edu-year i {
+.step-year i {
   font-size: 1rem;
 }
 
-.edu-description {
+.step-description {
   font-family: 'Inter', sans-serif;
   color: #cbd5e0;
   font-size: 0.95rem;
   line-height: 1.6;
   margin-top: 15px;
-  transition: all 0.3s ease;
-}
-
-.education-card:hover .edu-description {
-  color: #e2e8f0;
-}
-
-.edu-decoration {
-  position: absolute;
-  bottom: -50px;
-  right: -50px;
-  width: 150px;
-  height: 150px;
-  background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.education-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  position: relative;
-  z-index: 1;
-}
-
-.stat-item {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 35px;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
-  transition: all 0.4s ease;
-  animation: fadeInScale 0.6s ease forwards;
-  opacity: 0;
-}
-
-.stat-item:nth-child(1) { animation-delay: 0.4s; }
-.stat-item:nth-child(2) { animation-delay: 0.5s; }
-.stat-item:nth-child(3) { animation-delay: 0.6s; }
-
-@keyframes fadeInScale {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.stat-item:hover {
-  transform: translateY(-10px);
-  background: rgba(118, 75, 162, 0.1);
-  border-color: rgba(118, 75, 162, 0.3);
-  box-shadow: 0 15px 40px rgba(118, 75, 162, 0.3);
-}
-
-.stat-icon {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  filter: drop-shadow(0 5px 15px rgba(102, 126, 234, 0.4));
-  animation: bounce 2s ease-in-out infinite;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.stat-item h4 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.3rem;
-  color: #fff;
-  margin-bottom: 12px;
-  font-weight: 600;
-}
-
-.stat-item p {
-  font-family: 'Inter', sans-serif;
-  color: #cbd5e0;
-  line-height: 1.6;
-  font-size: 0.95rem;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .education-subtitle {
     font-size: 1.05rem;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
   }
 
-  .education-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+  .journey-step {
+    grid-template-columns: 70px 1fr;
+    gap: 25px;
+    margin-bottom: 45px;
   }
 
-  .education-card {
-    padding: 35px 30px;
-  }
-
-  .edu-icon-wrapper {
+  .step-number {
     width: 70px;
     height: 70px;
+    font-size: 2.2rem;
   }
 
-  .edu-icon {
-    font-size: 2.5rem;
+  .step-connector {
+    left: 35px;
+    top: 70px;
   }
 
-  .edu-content h3 {
+  .step-card {
+    padding: 30px;
+  }
+
+  .step-icon {
+    width: 65px;
+    height: 65px;
+    font-size: 2.2rem;
+  }
+
+  .step-content h3 {
     font-size: 1.5rem;
   }
 }
@@ -319,203 +250,199 @@
 @media (max-width: 640px) {
   .education-subtitle {
     font-size: 1rem;
-    margin-bottom: 35px;
+    margin-bottom: 45px;
   }
 
-  .education-card {
-    padding: 30px 25px;
+  .journey-step {
+    grid-template-columns: 60px 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
   }
 
-  .edu-icon-wrapper {
-    width: 65px;
-    height: 65px;
+  .step-number {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
   }
 
-  .edu-icon {
-    font-size: 2.3rem;
+  .step-connector {
+    left: 30px;
+    top: 60px;
+    width: 3px;
   }
 
-  .edu-content h3 {
+  .step-card {
+    padding: 28px 25px;
+  }
+
+  .step-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+
+  .step-content h3 {
     font-size: 1.4rem;
   }
 
-  .edu-institution {
+  .step-institution {
     font-size: 0.95rem;
   }
 
-  .edu-year {
+  .step-year {
     font-size: 0.9rem;
     padding: 7px 14px;
   }
 
-  .edu-description {
+  .step-description {
     font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) {
-  .education-card {
-    padding: 28px 22px;
+  .journey-step {
+    grid-template-columns: 55px 1fr;
+    gap: 18px;
+    margin-bottom: 35px;
   }
 
-  .edu-icon-wrapper {
-    width: 60px;
-    height: 60px;
+  .step-number {
+    width: 55px;
+    height: 55px;
+    font-size: 1.8rem;
   }
 
-  .edu-icon {
-    font-size: 2.1rem;
+  .step-connector {
+    left: 27px;
+    top: 55px;
   }
 
-  .edu-status {
+  .step-card {
+    padding: 25px 22px;
+  }
+
+  .step-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 1.8rem;
+  }
+
+  .step-status {
     font-size: 0.75rem;
     padding: 5px 14px;
   }
 
-  .edu-content h3 {
+  .step-content h3 {
     font-size: 1.3rem;
   }
 
-  .edu-institution {
+  .step-institution {
     font-size: 0.9rem;
   }
 
-  .edu-year {
+  .step-year {
     font-size: 0.85rem;
     padding: 6px 12px;
   }
 
-  .edu-description {
+  .step-description {
     font-size: 0.88rem;
-  }
-
-  .stat-item {
-    padding: 30px 25px;
-  }
-
-  .stat-icon {
-    font-size: 2.5rem;
-  }
-
-  .stat-item h4 {
-    font-size: 1.2rem;
-  }
-
-  .stat-item p {
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 420px) {
-  .education-card {
-    padding: 25px 20px;
-  }
-
-  .edu-icon-wrapper {
-    width: 55px;
-    height: 55px;
-  }
-
-  .edu-icon {
-    font-size: 2rem;
-  }
-
-  .edu-content h3 {
-    font-size: 1.25rem;
-  }
-
-  .edu-institution {
-    font-size: 0.88rem;
-  }
-
-  .edu-description {
-    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 360px) {
   .education-subtitle {
     font-size: 0.95rem;
+    margin-bottom: 40px;
+  }
+
+  .journey-step {
+    grid-template-columns: 50px 1fr;
+    gap: 15px;
     margin-bottom: 30px;
   }
 
-  .education-card {
+  .step-number {
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+  }
+
+  .step-connector {
+    left: 25px;
+    top: 50px;
+  }
+
+  .step-card {
     padding: 22px 18px;
   }
 
-  .edu-icon-wrapper {
+  .step-icon {
     width: 50px;
     height: 50px;
-    margin-bottom: 20px;
+    font-size: 1.6rem;
+    margin-bottom: 15px;
   }
 
-  .edu-icon {
-    font-size: 1.8rem;
-  }
-
-  .edu-status {
+  .step-status {
     font-size: 0.7rem;
     padding: 4px 12px;
   }
 
-  .edu-content h3 {
+  .step-content h3 {
     font-size: 1.2rem;
   }
 
-  .edu-institution {
+  .step-institution {
     font-size: 0.85rem;
   }
 
-  .edu-year {
+  .step-year {
     font-size: 0.8rem;
     padding: 5px 10px;
   }
 
-  .edu-description {
+  .step-description {
     font-size: 0.82rem;
-  }
-
-  .stat-item {
-    padding: 25px 20px;
-  }
-
-  .stat-icon {
-    font-size: 2.2rem;
-  }
-
-  .stat-item h4 {
-    font-size: 1.1rem;
-  }
-
-  .stat-item p {
-    font-size: 0.85rem;
   }
 }
 
 @media (max-width: 320px) {
-  .education-card {
+  .journey-step {
+    grid-template-columns: 45px 1fr;
+    gap: 12px;
+  }
+
+  .step-number {
+    width: 45px;
+    height: 45px;
+    font-size: 1.4rem;
+  }
+
+  .step-connector {
+    left: 22px;
+    top: 45px;
+  }
+
+  .step-card {
     padding: 20px 15px;
   }
 
-  .edu-icon-wrapper {
+  .step-icon {
     width: 45px;
     height: 45px;
+    font-size: 1.5rem;
   }
 
-  .edu-icon {
-    font-size: 1.6rem;
-  }
-
-  .edu-content h3 {
+  .step-content h3 {
     font-size: 1.15rem;
   }
 
-  .edu-institution {
+  .step-institution {
     font-size: 0.82rem;
   }
 
-  .edu-description {
+  .step-description {
     font-size: 0.8rem;
-    line-height: 1.5;
   }
 }

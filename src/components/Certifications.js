@@ -57,14 +57,31 @@ const Certifications = () => {
     }
   ];
 
-  const openModal = (cert) => {
+  const openModal = (e, cert) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const scrollY = window.scrollY;
     setSelectedCert(cert);
     document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+    document.body.setAttribute('data-scroll-position', scrollY);
   };
 
-  const closeModal = () => {
+  const closeModal = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    const scrollY = document.body.getAttribute('data-scroll-position') || '0';
     setSelectedCert(null);
-    document.body.style.overflow = 'unset';
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.overflow = '';
+    document.body.style.width = '';
+    document.body.removeAttribute('data-scroll-position');
+    window.scrollTo(0, parseInt(scrollY));
   };
 
   return (
@@ -75,7 +92,7 @@ const Certifications = () => {
       <div className="certifications-grid">
         {certifications.map((cert, index) => (
           <div className="cert-card" key={index}>
-            <div className="cert-image-wrapper" onClick={() => openModal(cert)}>
+            <div className="cert-image-wrapper" onClick={(e) => openModal(e, cert)}>
               <img src={cert.image} alt={cert.title} className="cert-image" />
               <div className="cert-overlay">
                 <i className="fas fa-search-plus"></i>
@@ -140,9 +157,9 @@ const Certifications = () => {
 
       {/* Modal */}
       {selectedCert && (
-        <div className="cert-modal" onClick={closeModal}>
+        <div className="cert-modal" onClick={(e) => closeModal(e)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={closeModal}>
+            <button className="modal-close" onClick={(e) => closeModal(e)}>
               <i className="fas fa-times"></i>
             </button>
             <img src={selectedCert.image} alt={selectedCert.title} />

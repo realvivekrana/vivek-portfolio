@@ -4,28 +4,10 @@
   width: 100%;
   z-index: 1000;
   padding: 20px 0;
-  transition: all 0.3s ease;
-  background: rgba(15, 12, 41, 0.7);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.scroll-progress {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-  transition: width 0.1s ease;
-  z-index: 1001;
-  box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
-}
-
-.navbar.scrolled {
-  padding: 15px 0;
   background: rgba(15, 12, 41, 0.95);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 .nav-container {
@@ -37,52 +19,15 @@
   align-items: center;
 }
 
-.logo {
+.portfolio-text {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 2rem;
-  font-weight: 800;
+  font-size: 1.8rem;
+  font-weight: 700;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: -1.5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  position: relative;
-}
-
-.logo::before {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #667eea, #764ba2);
-  transition: width 0.3s ease;
-  border-radius: 2px;
-}
-
-.logo:hover::before {
-  width: 100%;
-}
-
-.logo:hover {
-  transform: scale(1.05);
-}
-
-.logo-bracket {
-  color: #667eea;
-  font-weight: 900;
-  animation: pulse 2s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+  letter-spacing: 0.5px;
 }
 
 .nav-menu {
@@ -276,16 +221,12 @@
     padding: 12px 0;
   }
 
-  .navbar.scrolled {
-    padding: 10px 0;
-  }
-
   .nav-container {
     padding: 0 15px;
   }
 
-  .logo {
-    font-size: 1.5rem;
+  .portfolio-text {
+    font-size: 1.4rem;
   }
 
   .menu-close {
@@ -314,8 +255,8 @@
 }
 
 @media (max-width: 420px) {
-  .logo {
-    font-size: 1.4rem;
+  .portfolio-text {
+    font-size: 1.3rem;
   }
 
   .menu-close {
@@ -347,8 +288,8 @@
     padding: 0 12px;
   }
 
-  .logo {
-    font-size: 1.3rem;
+  .portfolio-text {
+    font-size: 1.2rem;
   }
 
   .menu-close {
@@ -377,8 +318,8 @@
 }
 
 @media (max-width: 320px) {
-  .logo {
-    font-size: 1.2rem;
+  .portfolio-text {
+    font-size: 1.1rem;
   }
 
   .menu-close {

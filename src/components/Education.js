@@ -10,7 +10,8 @@ const Education = () => {
       status: 'Currently Pursuing',
       icon: '🎓',
       color: '#667eea',
-      description: 'Specializing in Artificial Intelligence and Machine Learning'
+      description: 'Specializing in Artificial Intelligence and Machine Learning',
+      step: 3
     },
     {
       degree: 'BCA',
@@ -19,7 +20,8 @@ const Education = () => {
       status: 'Completed',
       icon: '💻',
       color: '#764ba2',
-      description: 'Bachelor of Computer Applications with focus on software development'
+      description: 'Bachelor of Computer Applications with focus on software development',
+      step: 2
     },
     {
       degree: 'Intermediate',
@@ -28,62 +30,45 @@ const Education = () => {
       status: 'Completed',
       icon: '📚',
       color: '#f093fb',
-      description: 'Science stream with Mathematics and Computer Science'
+      description: 'Science stream with Mathematics and Computer Science',
+      step: 1
     }
   ];
 
   return (
     <section id="education" className="education">
-      <h2>Education</h2>
-      <p className="education-subtitle">My academic journey and qualifications</p>
+      <h2>Education Journey</h2>
+      <p className="education-subtitle">My academic path and qualifications</p>
       
-      <div className="education-grid">
+      <div className="education-journey">
         {education.map((edu, index) => (
-          <div className="education-card" key={index}>
-            <div className="edu-icon-wrapper" style={{ background: edu.color }}>
-              <span className="edu-icon">{edu.icon}</span>
+          <div className="journey-step" key={index}>
+            <div className="step-number" style={{ background: edu.color }}>
+              {edu.step}
             </div>
-            
-            <div className="edu-content">
-              <div className="edu-status" style={{ borderColor: edu.color, color: edu.color }}>
-                {edu.status}
+            <div className="step-connector"></div>
+            <div className="step-card">
+              <div className="step-icon" style={{ background: edu.color }}>
+                {edu.icon}
               </div>
-              
-              <h3>{edu.degree}</h3>
-              <p className="edu-institution">
-                <i className="fas fa-university"></i>
-                {edu.institution}
-              </p>
-              
-              <div className="edu-year">
-                <i className="fas fa-calendar-alt"></i>
-                <span>{edu.year}</span>
+              <div className="step-content">
+                <div className="step-status" style={{ borderColor: edu.color, color: edu.color }}>
+                  {edu.status}
+                </div>
+                <h3>{edu.degree}</h3>
+                <p className="step-institution">
+                  <i className="fas fa-university"></i>
+                  {edu.institution}
+                </p>
+                <div className="step-year">
+                  <i className="fas fa-calendar-alt"></i>
+                  <span>{edu.year}</span>
+                </div>
+                <p className="step-description">{edu.description}</p>
               </div>
-              
-              <p className="edu-description">{edu.description}</p>
             </div>
-            
-            <div className="edu-decoration"></div>
           </div>
         ))}
-      </div>
-
-      <div className="education-stats">
-        <div className="stat-item">
-          <div className="stat-icon">🎯</div>
-          <h4>Academic Excellence</h4>
-          <p>Focused on cutting-edge technologies</p>
-        </div>
-        <div className="stat-item">
-          <div className="stat-icon">🚀</div>
-          <h4>Continuous Learning</h4>
-          <p>Always expanding knowledge base</p>
-        </div>
-        <div className="stat-item">
-          <div className="stat-icon">💡</div>
-          <h4>Practical Skills</h4>
-          <p>Theory combined with hands-on experience</p>
-        </div>
       </div>
     </section>
   );

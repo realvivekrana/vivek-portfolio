@@ -10,7 +10,8 @@ const Experience = () => {
       period: 'February 2026 - Present',
       status: 'Current',
       icon: '🚀',
-      color: '#667eea'
+      color: '#667eea',
+      step: 3
     },
     {
       company: 'Cetpa Infotech Pvt Ltd',
@@ -19,7 +20,8 @@ const Experience = () => {
       period: 'April 2025 - September 2025',
       status: 'Completed',
       icon: '💻',
-      color: '#764ba2'
+      color: '#764ba2',
+      step: 2
     },
     {
       company: 'Skills Academy',
@@ -28,61 +30,47 @@ const Experience = () => {
       period: 'September 2023 - May 2024',
       status: 'Completed',
       icon: '📚',
-      color: '#f093fb'
+      color: '#f093fb',
+      step: 1
     }
   ];
 
   return (
     <section id="experience" className="experience">
-      <h2>Professional Experience</h2>
-      <p className="experience-subtitle">My journey in web development and training</p>
+      <h2>Professional Journey</h2>
+      <p className="experience-subtitle">My career path in web development and training</p>
       
-      <div className="experience-timeline">
+      <div className="experience-journey">
         {experiences.map((exp, index) => (
-          <div className="experience-card" key={index}>
-            <div className="exp-header">
-              <div className="exp-icon-wrapper" style={{ background: exp.color }}>
-                <span className="exp-icon">{exp.icon}</span>
-              </div>
-              <div className="exp-status" style={{ borderColor: exp.color, color: exp.color }}>
-                {exp.status}
-              </div>
+          <div className="journey-step" key={index}>
+            <div className="step-number" style={{ background: exp.color }}>
+              {exp.step}
             </div>
-            
-            <div className="exp-body">
-              <h3>{exp.company}</h3>
-              <p className="exp-role">{exp.role}</p>
-              <div className="exp-details">
-                <div className="detail-item">
-                  <i className="fas fa-map-marker-alt"></i>
-                  <span>{exp.location}</span>
+            <div className="step-connector"></div>
+            <div className="step-card">
+              <div className="step-icon" style={{ background: exp.color }}>
+                {exp.icon}
+              </div>
+              <div className="step-content">
+                <div className="step-status" style={{ borderColor: exp.color, color: exp.color }}>
+                  {exp.status}
                 </div>
-                <div className="detail-item">
-                  <i className="fas fa-calendar-alt"></i>
-                  <span>{exp.period}</span>
+                <h3>{exp.company}</h3>
+                <p className="step-role">{exp.role}</p>
+                <div className="step-details">
+                  <div className="detail-item">
+                    <i className="fas fa-map-marker-alt"></i>
+                    <span>{exp.location}</span>
+                  </div>
+                  <div className="detail-item">
+                    <i className="fas fa-calendar-alt"></i>
+                    <span>{exp.period}</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         ))}
-      </div>
-
-      <div className="experience-summary">
-        <div className="summary-card">
-          <div className="summary-icon">🎯</div>
-          <h4>Hands-on Experience</h4>
-          <p>Gained practical knowledge through internships and training programs</p>
-        </div>
-        <div className="summary-card">
-          <div className="summary-icon">🌟</div>
-          <h4>Continuous Learning</h4>
-          <p>Committed to staying updated with latest web technologies</p>
-        </div>
-        <div className="summary-card">
-          <div className="summary-icon">💡</div>
-          <h4>Real Projects</h4>
-          <p>Worked on live projects and industry-standard applications</p>
-        </div>
       </div>
     </section>
   );
