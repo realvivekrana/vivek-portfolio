@@ -59,10 +59,12 @@ const Certifications = () => {
 
   const openModal = (cert) => {
     setSelectedCert(cert);
+    document.body.style.overflow = 'hidden';
   };
 
   const closeModal = () => {
     setSelectedCert(null);
+    document.body.style.overflow = 'unset';
   };
 
   return (

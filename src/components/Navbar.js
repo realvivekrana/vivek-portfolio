@@ -4,10 +4,16 @@ import './Navbar.css';
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      
+      // Calculate scroll progress
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (window.scrollY / windowHeight) * 100;
+      setScrollProgress(scrolled);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -41,8 +47,13 @@ const Navbar = () => {
   return (
     <>
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <div className="scroll-progress" style={{ width: `${scrollProgress}%` }}></div>
         <div className="nav-container">
-          <div className="logo">Portfolio.</div>
+          <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <span className="logo-bracket">&lt;</span>
+            VK
+            <span className="logo-bracket">/&gt;</span>
+          </div>
           <div className={`nav-menu ${menuOpen ? 'active' : ''}`}>
             <div className="menu-close" onClick={() => setMenuOpen(false)}>
               <i className="fas fa-times"></i>
