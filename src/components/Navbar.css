@@ -115,6 +115,8 @@
     border: 1px solid rgba(102, 126, 234, 0.2);
     border-right: none;
     gap: 25px;
+    max-height: calc(100vh - 75px);
+    overflow-y: auto;
   }
 
   .nav-menu.active {
@@ -128,6 +130,7 @@
 
   .hamburger {
     display: flex;
+    z-index: 1001;
   }
 }
 
